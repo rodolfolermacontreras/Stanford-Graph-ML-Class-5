@@ -26,6 +26,6 @@ ADD ./requirements.txt /home/scpdxcs
 
 RUN pip3 install \
   -f https://download.pytorch.org/whl/torch_stable.html \
-  -f https://data.pyg.org/whl/torch-1.12.1+$DEVICE.html \
-  -f https://pytorch-geometric.com/whl/torch-1.12.1+$DEVICE.html \
+  -f https://data.pyg.org/whl/torch-1.13.0+$DEVICE.html \
+  -f https://pytorch-geometric.com/whl/torch-1.13.0+$DEVICE.html \
   -r ~/requirements.txt
