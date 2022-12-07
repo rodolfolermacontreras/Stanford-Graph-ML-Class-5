@@ -9,8 +9,8 @@ scipy>=1.7.3
 scikit-learn>=1.0.2
 sklearn>=0.0
 pillow>=7.1.2
-torch==1.12.1+${DEVICE}
-torchvision==0.13.1+${DEVICE}
+torch==1.13.0+${DEVICE}
+torchvision==0.14.0+${DEVICE}
 torch-scatter
 torch-sparse
 torch-geometric
