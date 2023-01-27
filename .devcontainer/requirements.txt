@@ -7,13 +7,11 @@ numpy>=1.21.6
 pandas>=1.3.5
 scipy>=1.7.3
 scikit-learn>=1.0.2
-sklearn>=0.0
 pillow>=7.1.2
-torch==1.13.0+${DEVICE}
-torchvision==0.14.0+${DEVICE}
+torch==1.13.1+${DEVICE}
+python-louvain==0.16
 torch-scatter
 torch-sparse
 torch-geometric
 ogb
 deepsnap
-python-louvain==0.16
