@@ -17,15 +17,37 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
 # Install Python 3.8
 RUN add-apt-repository -y ppa:deadsnakes/ppa && apt-get install -y python3-pip
 
-# Set working directory
-WORKDIR /home/scpdxcs
-ENV HOME /home/scpdxcs
-
 # Add and install the System Depdendencies
-ADD ./requirements.txt /home/scpdxcs
+ADD ./requirements.txt ./
 
-RUN pip3 install \
-  -f https://download.pytorch.org/whl/torch_stable.html \
-  -f https://data.pyg.org/whl/torch-1.13.0+$DEVICE.html \
-  -f https://pytorch-geometric.com/whl/torch-1.13.0+$DEVICE.html \
-  -r ~/requirements.txt
+RUN if [ -z "$DEVICE" ] ; then \
+      pip3 install \
+        -f https://download.pytorch.org/whl/torch_stable.html \
+            gradescope-utils>=0.4.0 \
+            jupyter>=1.0.0 \
+            matplotlib>=3.2.2 \
+            matplotlib-inline>=0.1.2 \
+            networkx>=2.6.3 \
+            numpy>=1.21.6 \
+            pandas>=1.3.5 \
+            scipy>=1.7.3 \
+            scikit-learn>=1.0.2 \
+            pillow>=7.1.2 \
+            torch==1.13.1 \
+            python-louvain==0.16; \
+      # Separate on MacOS with Apple Silicon, to be able to install PyG  
+      pip3 install \
+        torch-scatter \
+        torch-sparse \
+        torch-geometric \
+        ogb \
+        deepsnap; \
+
+    else \
+
+      pip3 install \
+      -f https://download.pytorch.org/whl/torch_stable.html \
+      -f https://data.pyg.org/whl/torch-1.13.1+$DEVICE.html \
+      -f https://pytorch-geometric.com/whl/torch-1.13.1+$DEVICE.html \
+      -r ./requirements.txt; \
+  fi
