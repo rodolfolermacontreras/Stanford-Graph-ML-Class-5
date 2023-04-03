@@ -73,7 +73,7 @@ pip3 install \
         "scipy>=1.7.3" \
         "scikit-learn>=1.0.2" \
         "pillow>=7.1.2" \
-        "torch==1.13.1" \
+        "torch==2.0.0" \
         "python-louvain==0.16"
 
 ```
