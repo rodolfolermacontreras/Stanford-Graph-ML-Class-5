@@ -12,7 +12,7 @@
 		// "--platform=linux/arm64", "--build-arg", "BASE_IMAGE=arm64v8/ubuntu:20.04",
 
 		// If you are on x64 CPU with CUDA(Nvidia) GPU device uncomment below line
-		// "--platform=linux/amd64", "--build-arg", "DEVICE=cu116", "--build-arg", "BASE_IMAGE=nvidia/cuda:11.6.0-runtime-ubuntu20.04",
+		// "--platform=linux/amd64", "--build-arg", "DEVICE=cu118", "--build-arg", "BASE_IMAGE=nvidia/cuda:11.8.0-runtime-ubuntu20.04",
 
 		"-t", "xcs224w:latest",
 		".devcontainer"
