@@ -47,7 +47,7 @@ RUN if [ -z "$DEVICE" ] ; then \
 
       pip3 install \
       -f https://download.pytorch.org/whl/torch_stable.html \
-      -f https://data.pyg.org/whl/torch-1.13.1+$DEVICE.html \
-      -f https://pytorch-geometric.com/whl/torch-1.13.1+$DEVICE.html \
+      -f https://data.pyg.org/whl/torch-2.0.0+$DEVICE.html \
+      -f https://pytorch-geometric.com/whl/torch-2.0.0+$DEVICE.html \
       -r ./requirements.txt; \
   fi
