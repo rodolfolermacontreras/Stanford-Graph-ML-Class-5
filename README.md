@@ -1,94 +1,120 @@
 # XCS224W Colab 5 Student Code Repository
 This repository contains all the code for your assignment!
+
 ## Running the Jupyter notebook locally
 
-We have created a `Dockerfile` in the `.devcontainer` subirectory. 
-If you are using [Visual Studio Code](https://code.visualstudio.com/) 
-you can develop directly in container with it. We have provided a 
- `devcontainer.json` configuration file that when executed, will
- build automatically the `Docker` image and start `VSCode` in the container.
- For finding out the prerequisites and how to deal with the configuration file 
- `devcontainer.json` please check the [Remote development in Containers tutorial](https://code.visualstudio.com/docs/remote/containers-tutorial).
-
- The `Dockerfile` is able to handle systems with or without `GPU`s. By default the 
- `devcontainer.json` builds the image with `GPU` support. If you don't have a `GPU`
- check the comments inside the `devcontainer.json` to be able to change the arguments
- required to build a Docker image without `GPU` support.
-
- Additionally, in order for `Docker` to be able to access the `GPU`, please install the 
- [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#setting-up-nvidia-container-toolkit)
-
- If you are not using `Visual Studio Code` as IDE, you should be familiar with `Docker` 
- to be able to extract the build and run parameters from the `devcontainer.json` configuration file
- and execute them manually on your system! 
- 
- <br />
-
-## !!! Instructions for MacOS with Apple Silicon devices **only** !!!
+We provide below instructions to setup the environment used throughout this class. We are supporting Linux, macOS & Windows so please make sure you follow the exact instructions provided for your platform, in order to have it working on your machine!
 
 <br />
 
-### On MacOS with Apple Silicon (Mx chips) there is a performance degradation of 50% on Docker containes built with ARM architecture. On Docker containers built with amd64 architecture the degradation magnitude is very huge!
-
-<br />
-
-### The setup below therefore is only dedicated to MacOS with Apple Silicon devices in order to leverage best your Mac. **Please note that PyG is not available for **MPS** device and therefore the Apple GPUs cannot be used as of now with PyG**!!! 
+### !! **The commands below need to be executed in a `bash` terminal on Linux/macOS and in a `cmd` terminal on Windows** !!
 
 <br />
 
 
-### Step 1: Make sure you have Miniconda installed. More info about Miniconda installation on MacOS can be found [here](https://docs.conda.io/projects/conda/en/latest/user-guide/install/macos.html]).
+### Step 1: Make sure you have Miniconda installed. More info about Miniconda installation for your specific platform can be found [here](https://docs.conda.io/projects/conda/en/latest/user-guide/install).
 
 <br />
 
-### Step 2: create a default conda environment named **xcs224w** with Python 3.8: 
+### Step 2: create a default conda environment named **XCS224W** with Python 3.10: 
 
 ```
-conda create --name xcs224w python=3.8 -y
+conda create --name XCS224W python=3.10 -y
 ```
 
 <br />
 
  
-### Step 3: activate the just created xcs224w environment:
+### Step 3: activate the just created XCS224W environment:
 
 ```
-conda activate xcs224w
+conda activate XCS224W
 ```
+
+### Step 4: we are supporting the following devices on each of the platforms:
+
+|             | `cpu` | `cu118` |
+|-------------|-------|---------|
+| **Linux**   | ✅    | ✅      |
+| **Windows** | ✅    | ✅      |
+| **macOS**   | ✅    |         |
 
 <br />
 
-### Step 4: install first set of required tools in the **xcs224w** environment
-```
+If you have a Nvidia GPU the device you would need to set would be `cu118`, otherwise it should be `cpu`, as defined in the command below. 
 
-pip3 install \
-    -f https://download.pytorch.org/whl/torch_stable.html \
-        "gradescope-utils>=0.4.0" \
-        "jupyter>=1.0.0" \
-        "matplotlib>=3.2.2" \
-        "matplotlib-inline>=0.1.2" \
-        "networkx>=2.6.3" \
-        "numpy>=1.21.6" \
-        "pandas>=1.3.5" \
-        "scipy>=1.7.3" \
-        "scikit-learn>=1.0.2" \
-        "pillow>=7.1.2" \
-        "torch==2.0.0" \
-        "python-louvain==0.16"
-
-```
+**Apple GPU (`mps`) is not supported yet by Pytorch Geometrics(PyG)**!
 
 <br />
 
-### Step 5: install the second set of required tools in the **xcs224w** environment
+**For Linux/MacOS**:
 
 ```
       
-pip3 install \
-    "torch-scatter" \
-    "torch-sparse" \
-    "torch-geometric" \
-    "ogb" \
-    "deepsnap"
+export DEVICE=cpu
+
+```
+
+<br />
+
+**For Windows**:
+
+```
+      
+set DEVICE=cpu
+
+```
+
+<br />
+
+### Step 5: install first set of required tools in the **XCS224W** environment as defined in the `.environment/requirements.txt` file.
+
+**For Linux/MacOS**:
+
+```
+
+pip install \
+    -f https://download.pytorch.org/whl/torch_stable.html \
+    -r .environment/requirements.txt
+
+```
+
+**For Windows**:
+
+```
+
+pip install ^
+    -f https://download.pytorch.org/whl/torch_stable.html ^
+    -r .environment\requirements.txt
+
+```
+
+<br />
+
+### Step 6: install the second set of required tools in the **XCS224W** environment as defined in the `.environment/graph_ml_requirements.txt` file.
+
+<br />
+
+**For Linux/MacOS**:
+
+```
+      
+pip install \
+    -f https://data.pyg.org/whl/torch-2.0.0+${DEVICE}.html \
+    -f https://pytorch-geometric.com/whl/torch-2.0.0+${DEVICE}.html \
+    -r .environment/graph_ml_requirements.txt
+
+```
+
+<br />
+
+**For Windows**:
+
+```
+      
+pip install ^
+    -f https://data.pyg.org/whl/torch-2.0.0+%DEVICE%.html ^
+    -f https://pytorch-geometric.com/whl/torch-2.0.0+%DEVICE%.html ^
+    -r .environment\graph_ml_requirements.txt
 
 ```
