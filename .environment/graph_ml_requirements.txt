@@ -3,4 +3,4 @@ torch-scatter
 torch-sparse
 torch-geometric
 ogb
-deepsnap
+deepsnap @ git+https://github.com/SebastianHurubaru/deepsnap.git
