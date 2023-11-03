@@ -100,8 +100,8 @@ pip install ^
 ```
       
 pip install \
-    -f https://data.pyg.org/whl/torch-2.0.1+${DEVICE}.html \
-    -f https://pytorch-geometric.com/whl/torch-2.0.1+${DEVICE}.html \
+    -f https://data.pyg.org/whl/torch-2.1.0+${DEVICE}.html \
+    -f https://pytorch-geometric.com/whl/torch-2.1.0+${DEVICE}.html \
     -r .environment/graph_ml_requirements.txt
 
 ```
@@ -113,8 +113,8 @@ pip install \
 ```
       
 pip install ^
-    -f https://data.pyg.org/whl/torch-2.0.1+%DEVICE%.html ^
-    -f https://pytorch-geometric.com/whl/torch-2.0.1+%DEVICE%.html ^
+    -f https://data.pyg.org/whl/torch-2.1.0+%DEVICE%.html ^
+    -f https://pytorch-geometric.com/whl/torch-2.1.0+%DEVICE%.html ^
     -r .environment\graph_ml_requirements.txt
 
 ```
