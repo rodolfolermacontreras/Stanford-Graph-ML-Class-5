@@ -33,7 +33,7 @@ conda activate XCS224W
 
 ### Step 4: we are supporting the following devices on each of the platforms:
 
-|             | `cpu` | `cu118` |
+|             | `cpu` | `cu121` |
 |-------------|-------|---------|
 | **Linux**   | ✅    | ✅      |
 | **Windows** | ✅    | ✅      |
@@ -41,7 +41,7 @@ conda activate XCS224W
 
 <br />
 
-If you have a Nvidia GPU the device you would need to set would be `cu118`, otherwise it should be `cpu`, as defined in the command below. 
+If you have a Nvidia GPU the device you would need to set would be `cu121`, otherwise it should be `cpu`, as defined in the command below. 
 
 **Apple GPU (`mps`) is not supported yet by Pytorch Geometrics(PyG)**!
 
