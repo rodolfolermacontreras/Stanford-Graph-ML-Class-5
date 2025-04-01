@@ -33,7 +33,7 @@ conda activate XCS224W
 
 ### Step 4: we are supporting the following devices on each of the platforms:
 
-|             | `cpu` | `cu121` |
+|             | `cpu` | `cu124` |
 |-------------|-------|---------|
 | **Linux**   | ✅    | ✅      |
 | **Windows** | ✅    | ✅      |
@@ -41,7 +41,7 @@ conda activate XCS224W
 
 <br />
 
-If you have a Nvidia GPU the device you would need to set would be `cu121`, otherwise it should be `cpu`, as defined in the command below. 
+If you have a Nvidia GPU the device you would need to set would be `cu124`, otherwise it should be `cpu`, as defined in the command below. 
 
 **Apple GPU (`mps`) is not supported yet by Pytorch Geometrics(PyG)**!
 
@@ -100,8 +100,8 @@ pip install ^
 ```
       
 pip install \
-    -f https://data.pyg.org/whl/torch-2.4.0+${DEVICE}.html \
-    -f https://pytorch-geometric.com/whl/torch-2.4.0+${DEVICE}.html \
+    -f https://data.pyg.org/whl/torch-2.5.1+${DEVICE}.html \
+    -f https://pytorch-geometric.com/whl/torch-2.5.1+${DEVICE}.html \
     -r .environment/graph_ml_requirements.txt
 
 ```
@@ -113,8 +113,8 @@ pip install \
 ```
       
 pip install ^
-    -f https://data.pyg.org/whl/torch-2.4.0+%DEVICE%.html ^
-    -f https://pytorch-geometric.com/whl/torch-2.4.0+%DEVICE%.html ^
+    -f https://data.pyg.org/whl/torch-2.5.1+%DEVICE%.html ^
+    -f https://pytorch-geometric.com/whl/torch-2.5.1+%DEVICE%.html ^
     -r .environment\graph_ml_requirements.txt
 
 ```
